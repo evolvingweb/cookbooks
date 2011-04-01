@@ -13,11 +13,9 @@ service "gmetad" do
   enabled true
 end
 
-# i'm not sure why Hash.new([]) doesn't work here
-cluster_nodes = {}
-search(:node, 'ganglia:[* TO *]').each do |n|
-  cluster_nodes[n[:ganglia][:cluster_name]] ||= []
-  cluster_nodes[n[:ganglia][:cluster_name]] << n[:fqdn]
+cluster_nodes = Hash.new{ |h,k| h[k] = [] }
+search(:node, 'recipes:"ganglia::client"').each do |n|
+  cluster_nodes[n[:ganglia][:cluster_name]] << n[:ipaddress]
 end
 
 template "/etc/ganglia/gmetad.conf" do
