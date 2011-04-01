@@ -10,7 +10,7 @@ rundir  /var/run/munin
 tmpldir /etc/munin/templates
 
 <% @munin_nodes.each do |n| -%>
-[<%= n[:fqdn] %>]
+[<%= "#{n[:munin][:group]};" if n[:munin][:group] %><%= n[:fqdn] %>]
     address <%= n[:ipaddress] %>
     use_node_name yes
     graph_width <%= n[:munin][:graph][:width] rescue 800 %>

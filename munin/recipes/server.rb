@@ -31,7 +31,7 @@ template "/etc/cron.d/munin" do
   backup 0
 end
 
-munin_nodes = search :node, 'munin:[* TO *]'
+munin_nodes = search :node, 'recipes:"munin::client"'
 
 template "/etc/munin/munin.conf" do
   source "munin.conf.erb"
