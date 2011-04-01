@@ -1,0 +1,10 @@
+= DESCRIPTION:
+Install and configure denyhosts.
+
+= REQUIREMENTS:
+
+= ATTRIBUTES:
+See attributes/default.rb
+
+= USAGE:
+Add denyhosts to your runlist.

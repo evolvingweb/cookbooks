@@ -1,0 +1,29 @@
+{
+  "name": "xvfb",
+  "description": "Installs and configures xvfb",
+  "long_description": "",
+  "maintainer": "Evolving Web Inc.",
+  "maintainer_email": "sysadmin@evolvingweb.ca",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.0.1"
+}

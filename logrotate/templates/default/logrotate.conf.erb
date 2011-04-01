@@ -1,0 +1,13 @@
+<%= @p[:files].to_a.join("\n") %> {
+    <%= @p[:frequency] %>
+    rotate <%= @p[:rotate_count] %>
+    <%= "compress" if @p[:compress] %>
+    <%= "missingok" if @p[:missing_ok] %>
+    <%= "notifempty" unless @p[:rotate_if_empty] %>
+    sharedscripts
+    <% if @p[:restart_command] %>
+    postrotate
+        <%= @p[:restart_command] %>
+    endscript
+    <% end %>
+}

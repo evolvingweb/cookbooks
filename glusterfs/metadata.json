@@ -1,0 +1,37 @@
+{
+  "name": "glusterfs",
+  "description": "Setup GlusterFS servers and clients",
+  "long_description": "",
+  "maintainer": "Jeff Wallace",
+  "maintainer_email": "jeff@evolvingweb.ca",
+  "license": "Apache 2.0",
+  "platforms": {
+    "ubuntu": [
+
+    ],
+    "debian": [
+
+    ]
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "glusterfs::client": "Sets up a GlusterFS client",
+    "glusterfs::server": "Sets up a GlusterFS server"
+  },
+  "version": "0.1.0"
+}

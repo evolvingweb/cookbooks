@@ -1,0 +1,8 @@
+maintainer       "Evolving Web Inc."
+maintainer_email "sysadmin@evolvingweb.ca"
+license          "All rights reserved"
+description      "Installs/Configures tomcat6"
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
+version          "0.0.1"
+
+depends "java"

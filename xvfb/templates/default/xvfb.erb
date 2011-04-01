@@ -1,0 +1,54 @@
+#!/bin/bash
+
+PID_FILE="<%= node[:xvfb][:pid_file] %>"
+START_CMD="Xvfb :99 -ac"
+
+case "${1:-''}" in
+  'start')
+    if test -f $PID_FILE ; then
+      echo "Xvfb is already running."
+    else
+      $START_CMD &> /var/log/xvfb.log & echo $! > $PID_FILE
+      export DISPLAY=:99
+
+      error=$?
+      if test $error -gt 0 ; then
+        echo "${bon}Error $error! Couldn't start Xvfb!${boff}"
+      else
+        echo "Starting Xvfb..."
+      fi
+    fi
+  ;;
+  'stop')
+    if test -f $PID_FILE ; then
+      echo "Stopping Xvfb..."
+      PID=`cat $PID_FILE`
+      kill -3 $PID
+      if kill -9 $PID ; then
+        sleep 2
+        test -f $PID_FILE && rm -f $PID_FILE
+      else
+        echo "Xvfb could not be stopped..."
+      fi
+    else
+      echo "Xvfb is not running."
+    fi
+    ;;
+  'restart')
+    if test -f $PID_FILE ; then
+      kill -HUP `cat $PID_FILE`
+      test -f $PID_FILE && rm -f $PID_FILE
+      sleep 1
+      $START_CMD &> /var/log/xvfb.log & echo $! > $PID_FILE
+      export DISPLAY=:99
+
+      echo "Reload Xvfb..."
+    else
+      echo "Xvfb isn't running..."
+    fi
+    ;;
+  *)  # no parameter specified
+    echo "Usage: $SELF start|stop|restart"
+    exit 1
+  ;;
+esac

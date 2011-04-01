@@ -1,0 +1,6 @@
+zend_extension="<%= Dir['/usr/lib/php5/*/xdebug.so'].first %>"
+xdebug.overload_var_dump=1
+xdebug.default_enable=<%= @config[:enable] %>
+xdebug.profiler_enable=<%= @config[:profiler][:enable] %>
+xdebug.profiler_output_dir=<%= @config[:profiler][:output_dir] %>
+xdebug.profiler_output_name=<%= @config[:profiler][:output_name] %>

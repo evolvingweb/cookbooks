@@ -1,0 +1,54 @@
+#!/bin/bash
+
+JAVA_BIN="<%= node[:seleniumrc][:java_bin] %>"
+OPTS="-Xmx<%= node[:seleniumrc][:memory] %>m"
+JAR_FILE="<%= "#{node[:seleniumrc][:dir]}/#{node[:seleniumrc][:server]}" %>/selenium-server.jar"
+PID_FILE="<%= node[:seleniumrc][:pid_file] %>"
+START_CMD="$JAVA_BIN $OPTS -jar $JAR_FILE "
+
+case "${1:-''}" in
+  'start')
+    if test -f $PID_FILE ; then
+      echo "Selenium is already running."
+    else
+      $START_CMD &> /var/log/selenium.log & echo $! > $PID_FILE
+
+      error=$?
+      if test $error -gt 0 ; then
+        echo "${bon}Error $error! Couldn't start Selenium!${boff}"
+      else
+        echo "Starting Selenium..."
+      fi
+    fi
+  ;;
+  'stop')
+    if test -f $PID_FILE ; then
+      echo "Stopping Selenium..."
+      PID=`cat $PID_FILE`
+      kill -3 $PID
+      if kill -9 $PID ; then
+        sleep 2
+        test -f $PID_FILE && rm -f $PID_FILE
+      else
+        echo "Selenium could not be stopped..."
+      fi
+    else
+      echo "Selenium is not running."
+    fi
+    ;;
+  'restart')
+    if test -f $PID_FILE ; then
+      kill -HUP `cat $PID_FILE`
+      test -f $PID_FILE && rm -f $PID_FILE
+      sleep 1
+      $START_CMD &> /var/log/selenium.log & echo $! > $PID_FILE
+      echo "Reload Selenium..."
+    else
+      echo "Selenium isn't running..."
+    fi
+    ;;
+  *)  # no parameter specified
+    echo "Usage: $SELF start|stop|restart"
+    exit 1
+  ;;
+esac

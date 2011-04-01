@@ -1,0 +1,44 @@
+{
+  "name": "hudson",
+  "description": "Sets up Hudson on a Ubuntu server",
+  "long_description": "",
+  "maintainer": "Evolving Web Inc.",
+  "maintainer_email": "sysadmin@evolvingweb.ca",
+  "license": "none",
+  "platforms": {
+    "ubuntu": [
+
+    ]
+  },
+  "dependencies": {
+    "tomcat": [
+
+    ],
+    "java": [
+
+    ],
+    "nginx": [
+
+    ],
+    "git": [
+
+    ]
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0"
+}

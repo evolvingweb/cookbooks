@@ -1,0 +1,33 @@
+<VirtualHost *:80>
+  ServerAdmin sysadmin@evolvingweb.ca
+
+  DocumentRoot /usr/share/backuppc/cgi-bin
+  <Directory /usr/share/backuppc/cgi-bin/>
+    AllowOverride None
+    Allow from all
+    
+    # Uncomment the line below to ensure that nobody can sniff importanti
+    # info from network traffic during editing of the BackupPC config or
+    # when browsing/restoring backups.
+    # Requires that you have your webserver set up for SSL (https) access.
+    #SSLRequireSSL
+    				
+    Options ExecCGI FollowSymlinks
+    AddHandler cgi-script .cgi
+    DirectoryIndex index.cgi
+    
+    AuthGroupFile /etc/backuppc/htgroup
+    AuthUserFile /etc/backuppc/htpasswd
+    AuthType basic
+    AuthName "BackupPC admin"
+    require valid-user
+  </Directory>
+
+  ErrorLog /var/log/apache2/backuppc.error.log
+
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel warn
+
+  CustomLog /var/log/apache2/backuppc.access.log combined
+</VirtualHost>

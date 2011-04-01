@@ -1,0 +1,68 @@
+" tab fix
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+if has("autocmd")
+  filetype plugin indent on
+endif
+
+syntax on
+
+set showmatch
+
+" line numbers
+set number
+
+" leader character
+let mapleader = ","
+
+" bounce between brackets
+nnoremap <tab> %
+vnoremap <tab> %
+
+" search
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+nnoremap <leader><space> :noh<cr>
+
+" wrap at word
+set linebreak
+
+" colorscheme
+set background=dark
+
+" make cursor move by visual lines instead of file lines (when wrapping)
+map <up> gk
+map k gk
+imap <up> <C-o>gk
+map <down> gj
+map j gj
+imap <down> <C-o>gj
+map E ge
+
+" invisibles
+nmap <leader>l :set list!<CR>
+
+" new split
+nnoremap <leader>s<space> <C-w>v<C-w>l
+nnoremap <leader>vs <C-w><C-v>
+nnoremap <leader>hs <C-w><C-s>
+
+" navigate splits
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" navigate buffers
+map <A-h> :bp<CR>
+map <A-l> :bn<CR>
+
+" clean whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" sudo write
+cmap w!! w !sudo tee % >/dev/null

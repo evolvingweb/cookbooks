@@ -1,0 +1,31 @@
+{
+  "name": "backuppc",
+  "description": "Installs/Configures backuppc",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "maintainer": "Evolving Web Inc.",
+  "maintainer_email": "sysadmin@evolvingweb.ca",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "backuppc::server": "Set up a backuppc server",
+    "backuppc::client": "Set up a backuppc client"
+  },
+  "version": "0.0.1"
+}

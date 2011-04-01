@@ -1,0 +1,19 @@
+# The next three variables specifies where the location of the RRD
+# databases, the HTML output, and the logs, severally.  They all
+# must be writable by the user running munin-cron.
+dbdir   /var/lib/munin
+htmldir <%= node[:munin][:docroot] %>
+logdir  /var/log/munin
+rundir  /var/run/munin
+
+# Where to look for the HTML templates
+tmpldir /etc/munin/templates
+
+<% @munin_nodes.each do |n| -%>
+[<%= n[:fqdn] %>]
+    address <%= n[:ipaddress] %>
+    use_node_name yes
+    graph_width <%= n[:munin][:graph][:width] rescue 800 %>
+    graph_height <%= n[:munin][:graph][:height] rescue 300 %>
+
+<% end -%>

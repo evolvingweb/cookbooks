@@ -1,0 +1,41 @@
+{
+  "name": "seleniumrc",
+  "description": "Installs and configures Selenium RC",
+  "long_description": "",
+  "maintainer": "Evolving Web Inc.",
+  "maintainer_email": "sysadmin@evolvingweb.ca",
+  "license": "none",
+  "platforms": {
+    "ubuntu": [
+
+    ],
+    "debian": [
+
+    ]
+  },
+  "dependencies": {
+    "php": [
+
+    ],
+    "phpunit": [
+
+    ]
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0"
+}

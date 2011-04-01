@@ -1,0 +1,10 @@
+# Created by Chef for <%= node[:fqdn] %>
+# Any local modifications will be removed
+
+# sysadmin keys
+<%= @ssh_keys.flatten.join("\n") %>
+<% if @system_keys %>
+
+# system keys
+<%= @system_keys.flatten.join("\n") %>
+<% end %>
