@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ACTIVE_USER=$(activexuser)
+
+activezenity --question --text="Ready for lunch?"
+
+if [[ $? -eq 0 ]]; then
+  echo $ACTIVE_USER is ready
+else
+  echo $ACTIVE_USER says: $(activezenity --entry --text "When will you be ready?")
+fi
