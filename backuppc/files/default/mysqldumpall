@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DUMPDIR="/var/backups/mysql"
+DUMPOPTS="--opt --force --single-transaction"
+
+mkdir -p "$DUMPDIR"
+
+echo show databases | mysql | tail -n +2 | while read db; do
+  mysqldump $DUMPOPTS "$db" | gzip -c > "$DUMPDIR/$db.sql.gz"
+done
