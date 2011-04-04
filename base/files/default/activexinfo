@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+import subprocess
+import re
+import sys
+
+opt = ""
+if len(sys.argv) > 1:
+    opt = sys.argv[1]
+
+cmd = subprocess.Popen("ck-list-sessions", stdout=subprocess.PIPE)
+(stdout, stderr) = cmd.communicate()
+sess = re.compile("Session\d+")
+
+sessions = []
+session = {}
+
+for line in stdout.splitlines():
+    if sess.match(line):
+        sessions.append(session)
+        session = {}
+    else:
+        if line.find('='):
+            key, val = map(lambda x: x.strip().strip("'").lower(), line.split('='))
+            session[key] = val
+
+sessions.append(session)
+
+def isActive(session):
+    try:
+        return session['active'] == "true" and session['is-local'] == "true"
+    except:
+        return False
+
+sessions = filter(isActive, sessions).pop()
+
+if opt == 'uid':
+    print sessions['unix-user']
+elif opt == 'display':
+    print sessions['x11-display']
+elif opt == 'name':
+    print sessions['realname']
+else:
+    print "%s %s" %(sessions['unix-user'], sessions['x11-display'])
+

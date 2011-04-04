@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ACTIVE_USER=$(activexuser)
+ACTIVE_USER=$(activexinfo name)
 
 activezenity --question --text="Ready for lunch?"
 
