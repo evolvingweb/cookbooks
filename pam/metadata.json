@@ -1,0 +1,29 @@
+{
+  "name": "pam",
+  "description": "Configures pam",
+  "long_description": "= DESCRIPTION: \n\nConfiguration files for pam.\n\n= REQUIREMENTS:\n\n== Platform:\nTested on Ubuntu 10.04 / 10.10 x86_64\n\n= ATTRIBUTES: \n\n== recipe[pam::limits]\nnode[:pam][:limits] - An array with entries consisting of [[domain, type, item, value], ...]\n\n= USAGE:\n",
+  "maintainer": "Evolving Web Inc",
+  "maintainer_email": "jonvk@evolvingweb.ca",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.0.1"
+}

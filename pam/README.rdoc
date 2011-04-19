@@ -1,0 +1,15 @@
+= DESCRIPTION: 
+
+Configuration files for pam.
+
+= REQUIREMENTS:
+
+== Platform:
+Tested on Ubuntu 10.04 / 10.10 x86_64
+
+= ATTRIBUTES: 
+
+== recipe[pam::limits]
+node[:pam][:limits] - An array with entries consisting of [[domain, type, item, value], ...]
+
+= USAGE:
