@@ -27,15 +27,33 @@ root_group = value_for_platform(
 
 include_recipe "chef::client"
 
+dist_dir = value_for_platform(
+  ["ubuntu", "debian"] => { "default" => "debian" },
+  ["redhat", "centos", "fedora"] => { "default" => "redhat"}
+)
+conf_dir = value_for_platform(
+  ["ubuntu", "debian"] => { "default" => "default" },
+  ["redhat", "centos", "fedora"] => { "default" => "sysconfig"}
+)
+base_dir = "#{node.languages.ruby.gems_dir}/gems/chef-#{node.chef_packages.chef.version}/distro/#{dist_dir}/etc"
+
 %w{chef-solr chef-solr-indexer chef-server}.each do |svc|
   service svc do
     action :nothing
+  end
+
+  link "/etc/init.d/#{svc}" do
+    to "#{base_dir}/init.d/#{svc}"
   end
 end
 
 if node[:chef][:webui_enabled]
   service "chef-server-webui" do
     action :nothing
+  end
+
+  link "/etc/init.d/chef-server-webui" do
+    to "#{base_dir}/init.d/chef-server-webui"
   end
 end
 
