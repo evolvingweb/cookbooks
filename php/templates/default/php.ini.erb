@@ -400,6 +400,7 @@ track_errors = Off
 ; Log errors to syslog (Event Log on NT, not valid in Windows 95).
 ;error_log = syslog
 
+error_log = <%= node[:php][:apache2][:error_log] %>
 
 ;;;;;;;;;;;;;;;;;
 ; Data Handling ;

@@ -15,6 +15,7 @@ default[:php][:apache2][:post_max_size] = '8M'
 # error reporting
 default[:php][:apache2][:display_errors] = 'Off'
 default[:php][:apache2][:log_errors] = 'On'
+default[:php][:apache2][:log_errors] = 'syslog'
 
 # apc
 default[:php][:apc][:shm_size] = '512'
