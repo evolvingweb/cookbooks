@@ -2,10 +2,22 @@
 
 ACTIVE_USER=$(activexinfo name)
 
-activezenity --question --text="Ready for lunch?"
+activezenity --question --text="Ready for lunch?" --timeout=10
+READY=$?
 
-if [[ $? -eq 0 ]]; then
-  echo $ACTIVE_USER is ready
+if [[ $READY -eq 5 ]]; then
+  echo $ACTIVE_USER did not answer
 else
-  echo $ACTIVE_USER says: $(activezenity --entry --text "When will you be ready?")
+  activezenity --question --text="Do you have food?"
+  if [[ $? -eq 0 ]]; then
+    FOOD="HAS food"
+  else
+    FOOD="DOES NOT have food"
+  fi
+
+  if [[ $READY -eq 0 ]]; then
+    echo $ACTIVE_USER is ready and $FOOD
+  else
+    echo $ACTIVE_USER $FOOD and says: $(activezenity --entry --text "When will you be ready?")
+  fi
 fi
