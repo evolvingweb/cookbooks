@@ -1,6 +1,8 @@
 = DESCRIPTION:
+Installs and configures sets of packages for web development and system administration. All tools are command line based.
 
 = REQUIREMENTS:
+Tested on Ubuntu 10.04
 
 = ATTRIBUTES:
 
