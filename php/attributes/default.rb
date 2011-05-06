@@ -18,4 +18,4 @@ default[:php][:apache2][:log_errors] = 'On'
 default[:php][:apache2][:log_errors] = 'syslog'
 
 # apc
-default[:php][:apc][:shm_size] = '512'
+default[:php][:apc][:shm_size] = '256'
