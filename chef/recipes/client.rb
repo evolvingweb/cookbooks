@@ -30,20 +30,6 @@ ruby_block "reload_client_config" do
   action :nothing
 end
 
-service "chef-client" do
-  supports :restart => true
-  action [:enable, :start]
-end
-
-template "/etc/chef/client.rb" do
-  source "client.rb.erb"
-  owner "root"
-  group root_group
-  mode 0644
-  notifies :create, resources(:ruby_block => "reload_client_config")
-  notifies :restart, "service[chef-client]"
-end
-
 dist_dir = value_for_platform(
   ["ubuntu", "debian"] => { "default" => "debian" },
   ["redhat", "centos", "fedora"] => { "default" => "redhat"}
@@ -66,6 +52,20 @@ Dir["/home/*/.chef/*.pem"].each do |keyfile|
   file keyfile do
     mode 0600
   end
+end
+
+service "chef-client" do
+  supports :restart => true
+  action [:enable, :start]
+end
+
+template "/etc/chef/client.rb" do
+  source "client.rb.erb"
+  owner "root"
+  group root_group
+  mode 0644
+  notifies :create, resources(:ruby_block => "reload_client_config")
+  notifies :restart, "service[chef-client]"
 end
 
 log "Add the chef::delete_validation recipe to the run list to remove the #{Chef::Config[:validation_key]}" do
