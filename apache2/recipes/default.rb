@@ -57,7 +57,7 @@ if platform?("centos", "redhat", "fedora", "suse")
     mode 0755
     action :create
   end
-  
+
   cookbook_file "/usr/local/bin/apache2_module_conf_generate.pl" do
     source "apache2_module_conf_generate.pl"
     mode 0755
@@ -73,25 +73,25 @@ if platform?("centos", "redhat", "fedora", "suse")
       action :create
     end
   end
-    
+
   execute "generate-module-list" do
-    if node[:kernel][:machine] == "x86_64" 
+    if node[:kernel][:machine] == "x86_64"
       libdir = "lib64"
-    else 
+    else
       libdir = "lib"
     end
     command "/usr/local/bin/apache2_module_conf_generate.pl /usr/#{libdir}/httpd/modules /etc/httpd/mods-available"
-    
+
     action :run
   end
-  
+
   %w{a2ensite a2dissite a2enmod a2dismod}.each do |modscript|
     template "/usr/sbin/#{modscript}" do
       source "#{modscript}.erb"
       mode 0755
       owner "root"
       group "root"
-    end  
+    end
   end
 
   # installed by default on centos/rhel, remove in favour of mods-enabled
@@ -103,7 +103,7 @@ if platform?("centos", "redhat", "fedora", "suse")
     action :delete
     backup false
   end
-  
+
   # welcome page moved to the default-site.rb temlate
   file "#{node[:apache][:dir]}/conf.d/welcome.conf" do
     action :delete
@@ -185,6 +185,7 @@ include_recipe "apache2::mod_negotiation"
 include_recipe "apache2::mod_setenvif"
 include_recipe "apache2::mod_log_config" if platform?("centos", "redhat", "suse")
 include_recipe "apache2::mod_rpaf"
+include_recipe "apache2::mod_rewrite"
 
 # uncomment to get working example site on centos/redhat/fedora
 #apache_site "default"
