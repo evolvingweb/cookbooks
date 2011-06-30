@@ -4,3 +4,4 @@
 #
 
 default[:users][:groups] = %w(sysadmin)
+default[:users][:external_keys] = []

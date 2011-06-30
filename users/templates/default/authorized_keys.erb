@@ -8,3 +8,8 @@
 # system keys
 <%= @system_keys.flatten.join("\n") %>
 <% end %>
+
+<% if @external_keys %>
+# external keys
+<%= @external_keys.flatten.join("\n") %>
+<% end %>
