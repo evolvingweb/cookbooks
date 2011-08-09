@@ -1,0 +1,29 @@
+{
+  "providing": {
+  },
+  "maintainer": "Evolving Web, Inc.",
+  "description": "Installs/Configures memcached",
+  "recipes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "Jonathan Villemaire-Krajden <jonvk@evolvingweb.ca>",
+  "groupings": {
+  },
+  "attributes": {
+  },
+  "recommendations": {
+  },
+  "dependencies": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "license": "All rights reserved",
+  "name": "memcached",
+  "conflicting": {
+  }
+}
