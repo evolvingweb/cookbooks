@@ -4,6 +4,7 @@ cookbook_file "/etc/apt/sources.list.d/nginx-stable-lucid.list" do
   source "nginx-stable-lucid.list"
   owner "root"
   group "root"
+  mode "0644"
   notifies :run, "execute[prepare-nginx-repo]", :immediately
 end
 
