@@ -1,0 +1,120 @@
+; Start a new pool named 'www'.
+; the variable $pool can we used in any directive and will be replaced by the
+; pool name ('www' here)
+[www]
+
+; Per pool prefix
+; It only applies on the following directives:
+; - 'slowlog'
+; - 'listen' (unixsocket)
+; - 'chroot'
+; - 'chdir'
+; - 'php_values'
+; - 'php_admin_values'
+; When not set, the global prefix (or /usr) applies instead.
+; Note: This directive can also be relative to the global prefix.
+; Default Value: none
+;prefix = /path/to/pools/$pool
+
+; The address on which to accept FastCGI requests.
+; Valid syntaxes are:
+;   'ip.add.re.ss:port'    - to listen on a TCP socket to a specific address on
+;                            a specific port;
+;   'port'                 - to listen on a TCP socket to all addresses on a
+;                            specific port;
+;   '/path/to/unix/socket' - to listen on a unix socket.
+; Note: This value is mandatory.
+listen = /var/run/php-fpm.sock
+
+; Set listen(2) backlog. A value of '-1' means unlimited.
+; Default Value: 128 (-1 on FreeBSD and OpenBSD)
+;listen.backlog = -1
+ 
+; List of ipv4 addresses of FastCGI clients which are allowed to connect.
+; Equivalent to the FCGI_WEB_SERVER_ADDRS environment variable in the original
+; PHP FCGI (5.2.2+). Makes sense only with a tcp listening socket. Each address
+; must be separated by a comma. If this value is left blank, connections will be
+; accepted from any ip address.
+; Default Value: any
+;listen.allowed_clients = 127.0.0.1
+
+; Set permissions for unix socket, if one is used. In Linux, read/write
+; permissions must be set in order to allow connections from a web server. Many
+; BSD-derived systems allow connections regardless of permissions. 
+; Default Values: user and group are set as the running user
+;                 mode is set to 0666
+listen.owner = www-data
+listen.group = www-data
+listen.mode = 0666
+
+; Unix user/group of processes
+; Note: The user is mandatory. If the group is not set, the default user's group
+;       will be used.
+user = www-data
+group = www-data
+
+; Choose how the process manager will control the number of child processes.
+; Possible Values:
+;   static  - a fixed number (pm.max_children) of child processes;
+;   dynamic - the number of child processes are set dynamically based on the
+;             following directives:
+;             pm.max_children      - the maximum number of children that can
+;                                    be alive at the same time.
+;             pm.start_servers     - the number of children created on startup.
+;             pm.min_spare_servers - the minimum number of children in 'idle'
+;                                    state (waiting to process). If the number
+;                                    of 'idle' processes is less than this
+;                                    number then some children will be created.
+;             pm.max_spare_servers - the maximum number of children in 'idle'
+;                                    state (waiting to process). If the number
+;                                    of 'idle' processes is greater than this
+;                                    number then some children will be killed.
+; Note: This value is mandatory.
+pm = dynamic
+
+; The number of child processes to be created when pm is set to 'static' and the
+; maximum number of child processes to be created when pm is set to 'dynamic'.
+; This value sets the limit on the number of simultaneous requests that will be
+; served. Equivalent to the ApacheMaxClients directive with mpm_prefork.
+; Equivalent to the PHP_FCGI_CHILDREN environment variable in the original PHP
+; CGI.
+; Note: Used when pm is set to either 'static' or 'dynamic'
+; Note: This value is mandatory.
+pm.max_children = <%= node[:php][:fpm][:max_children] %>
+
+; The number of child processes created on startup.
+; Note: Used only when pm is set to 'dynamic'
+; Default Value: min_spare_servers + (max_spare_servers - min_spare_servers) / 2
+pm.start_servers = <%= node[:php][:fpm][:start_servers] %>
+
+; The desired minimum number of idle server processes.
+; Note: Used only when pm is set to 'dynamic'
+; Note: Mandatory when pm is set to 'dynamic'
+pm.min_spare_servers = <%= node[:php][:fpm][:min_spare_servers] %>
+
+; The desired maximum number of idle server processes.
+; Note: Used only when pm is set to 'dynamic'
+; Note: Mandatory when pm is set to 'dynamic'
+pm.max_spare_servers = <%= node[:php][:fpm][:max_spare_servers] %>
+
+; The number of requests each child process should execute before respawning.
+; This can be useful to work around memory leaks in 3rd party libraries. For
+; endless request processing specify '0'. Equivalent to PHP_FCGI_MAX_REQUESTS.
+; Default Value: 0
+pm.max_requests = <%= node[:php][:fpm][:max_requests] %>
+
+; Chroot to this directory at the start. This value must be defined as an
+; absolute path. When this value is not set, chroot is not used.
+; Note: you can prefix with '$prefix' to chroot to the pool prefix or one
+; of its subdirectories. If the pool prefix is not set, the global prefix
+; will be used instead.
+; Note: chrooting is a great security feature and should be used whenever
+;       possible. However, all PHP paths will be relative to the chroot
+;       (error_log, sessions.save_path, ...).
+; Default Value: not set
+;chroot =
+
+; Chdir to this directory at the start.
+; Note: relative path can be used.
+; Default Value: current directory or / when chroot
+chdir = /
