@@ -3,7 +3,12 @@
 # Recipe:: default
 #
 
-gem_package "ruby-shadow"
+r = gem_package "ruby-shadow" do
+  action :nothing
+end
+
+r.run_action(:install)
+Gem.clear_paths
 
 users = search :users, node[:users][:groups].map{ |g| "groups:#{g}" }.join(" OR ")
 
