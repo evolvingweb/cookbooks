@@ -1,0 +1,24 @@
+# Dropped off by Chef for <%= node[:fqdn] %>
+# This file will be overwritten on the next Chef run.
+#
+# Make foo.ewdev.ca dynamically use a DocumentRoot in
+# /var/shared/sites/foo/site .
+
+<% [:hostname, :fqdn].each do |key| %>
+<VirtualHost *:80>
+     ServerName <%= node[key] %>
+     ServerAlias *.<%= node[key] %>
+     UseCanonicalName Off
+     VirtualDocumentRoot /var/shared/sites/%-<%= @vhost_offsets[key] %>/site/
+     RewriteLog "/tmp/rewrite.log"
+     RewriteLogLevel 3
+     <Directory /var/shared/sites>
+       RewriteBase /
+       AllowOverride All
+       Options FollowSymlinks
+     </Directory>
+
+     LogLevel debug
+     CustomLog /var/log/apache2/vhost_combined.log combined
+</VirtualHost>
+<% end %>
