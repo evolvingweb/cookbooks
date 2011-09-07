@@ -1,29 +1,29 @@
 {
-  "name": "devtools",
-  "description": "Installs/Configures web development and sysadmin profiling and debugging command line tools",
-  "long_description": "= DESCRIPTION:\nInstalls and configures sets of packages for web development and system administration. All tools are command line based.\n\n= REQUIREMENTS:\nTested on Ubuntu 10.04\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-  "maintainer": "Evolving Web, Inc.",
-  "maintainer_email": "Jonathan Villemaire-Krajden <jonvk@evolvingweb.ca>",
-  "license": "All rights reserved",
-  "platforms": {
-  },
-  "dependencies": {
-  },
-  "recommendations": {
-  },
-  "suggestions": {
-  },
-  "conflicting": {
-  },
   "providing": {
-  },
-  "replacing": {
-  },
-  "attributes": {
-  },
-  "groupings": {
   },
   "recipes": {
   },
-  "version": "0.0.1"
+  "maintainer": "Evolving Web, Inc.",
+  "description": "Installs/Configures web development and sysadmin profiling and debugging command line tools",
+  "replacing": {
+  },
+  "maintainer_email": "Jonathan Villemaire-Krajden <jonvk@evolvingweb.ca>",
+  "groupings": {
+  },
+  "attributes": {
+  },
+  "recommendations": {
+  },
+  "dependencies": {
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "license": "All rights reserved",
+  "name": "devtools",
+  "conflicting": {
+  },
+  "long_description": "= DESCRIPTION:\nInstalls and configures sets of packages for web development and system administration. All tools are command line based.\n\n= REQUIREMENTS:\nTested on Ubuntu 10.04\n\n= ATTRIBUTES:\n\n= USAGE:\n\n"
 }
