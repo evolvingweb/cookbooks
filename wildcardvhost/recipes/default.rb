@@ -9,6 +9,8 @@
 # *.sage.ewdev.ca should map to
 # VirtualDocumentRoot /var/shared/sites/%-4/site
 
+include_recipe "apache2"
+
 def fqdn_offset(name)
   return (name.split('.').length + 1).to_s
 end
