@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{memcached libmemcached-dev}.each do |pkg|
+%w{memcached libmemcached-dev python-memcache}.each do |pkg|
   package pkg
 end
 
