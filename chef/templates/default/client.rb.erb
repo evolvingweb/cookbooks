@@ -5,7 +5,8 @@
 #
 
 log_level          :info
-log_location       STDOUT
+log_location       "<%= node[:chef][:log_dir] %>/client.log"
+verbose_logging    true
 ssl_verify_mode    :verify_none
 chef_server_url    "<%= node[:chef][:server_url] %>"
 
