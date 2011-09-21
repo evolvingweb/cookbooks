@@ -11,6 +11,14 @@ git "/usr/local/lib/drush" do
   action :sync
 end
 
+execute "drush" do
+  command "/usr/local/bin/drush > /dev/null"
+  action :nothing
+end
+
 link "/usr/local/bin/drush" do
   to "/usr/local/lib/drush/drush"
+  # Ensures drush runs when the link is created and only then.
+  notifies :run, resources(:execute => "drush")
 end
+
