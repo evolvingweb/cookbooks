@@ -72,6 +72,12 @@ log "Add the chef::delete_validation recipe to the run list to remove the #{Chef
   only_if { File.exists? Chef::Config[:validation_key] }
 end
 
+directory "/var/log/chef" do
+  owner "root"
+  group root_group
+  mode 0755
+end
+
 include_recipe "logrotate"
 
 logrotate "chef" do
