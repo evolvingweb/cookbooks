@@ -1,102 +1,102 @@
 {
-  "name": "sudo",
-  "description": "Installs sudo and configures /etc/sudoers",
-  "long_description": "",
+  "providing": {
+  },
+  "recipes": {
+    "sudo": "Installs sudo and configures /etc/sudoers"
+  },
   "maintainer": "Opscode, Inc.",
+  "description": "Installs sudo and configures /etc/sudoers",
+  "replacing": {
+  },
   "maintainer_email": "cookbooks@opscode.com",
-  "license": "Apache 2.0",
-  "platforms": {
-    "redhat": [
+  "groupings": {
+  },
+  "attributes": {
+    "authorization/sudoers/groups": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
 
-    ],
-    "centos": [
+      ],
+      "default": "",
+      "type": "array",
+      "recipes": [
+
+      ],
+      "display_name": "Sudo Groups",
+      "description": "Groups who are allowed sudo ALL"
+    },
+    "authorization": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "hash",
+      "recipes": [
+
+      ],
+      "display_name": "Authorization",
+      "description": "Hash of Authorization attributes"
+    },
+    "authorization/sudoers/users": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "",
+      "type": "array",
+      "recipes": [
+
+      ],
+      "display_name": "Sudo Users",
+      "description": "Users who are allowed sudo ALL"
+    },
+    "authorization/sudoers": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "hash",
+      "recipes": [
+
+      ],
+      "display_name": "Authorization Sudoers",
+      "description": "Hash of Authorization/Sudoers attributes"
+    }
+  },
+  "recommendations": {
+  },
+  "dependencies": {
+  },
+  "suggestions": {
+  },
+  "platforms": {
+    "debian": [
 
     ],
     "fedora": [
 
     ],
-    "ubuntu": [
-
-    ],
-    "debian": [
+    "centos": [
 
     ],
     "freebsd": [
 
+    ],
+    "ubuntu": [
+
+    ],
+    "redhat": [
+
     ]
   },
-  "dependencies": {
-  },
-  "recommendations": {
-  },
-  "suggestions": {
-  },
+  "version": "0.9.1",
+  "license": "Apache 2.0",
+  "name": "sudo",
   "conflicting": {
   },
-  "providing": {
-  },
-  "replacing": {
-  },
-  "attributes": {
-    "authorization": {
-      "display_name": "Authorization",
-      "description": "Hash of Authorization attributes",
-      "type": "hash",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "authorization/sudoers": {
-      "display_name": "Authorization Sudoers",
-      "description": "Hash of Authorization/Sudoers attributes",
-      "type": "hash",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "authorization/sudoers/users": {
-      "display_name": "Sudo Users",
-      "description": "Users who are allowed sudo ALL",
-      "type": "array",
-      "default": "",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "authorization/sudoers/groups": {
-      "display_name": "Sudo Groups",
-      "description": "Groups who are allowed sudo ALL",
-      "type": "array",
-      "default": "",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional",
-      "recipes": [
-
-      ]
-    }
-  },
-  "groupings": {
-  },
-  "recipes": {
-    "sudo": "Installs sudo and configures /etc/sudoers"
-  },
-  "version": "0.9.1"
+  "long_description": ""
 }

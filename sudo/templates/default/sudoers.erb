@@ -6,6 +6,7 @@ Defaults        !lecture,tty_tickets,!fqdn
 
 # users
 root ALL=(ALL) ALL
+sudo ALL=(ALL) ALL
 <% @users.each do |user| -%>
 <%= user %> ALL=(ALL) ALL
 <% end -%>
