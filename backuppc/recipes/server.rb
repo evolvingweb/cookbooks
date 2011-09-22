@@ -30,7 +30,7 @@ template "#{config[:dirs][:conf]}/hosts" do
   mode 0640
   owner config[:user]
   group "www-data"
-  variables :hosts => clients
+  variables :hosts => clients + config[:nonchef_clients]
 end
 
 clients.each do |client|
@@ -40,6 +40,18 @@ clients.each do |client|
     owner config[:user]
     group "www-data"
     variables :client => client, :config => client[:backuppc][:client]
+  end
+end
+
+if config[:nonchef_clients] and config[:nonchef_clients].count > 0
+  config[:nonchef_clients].each do |client|
+    template "#{config[:dirs][:conf]}/#{client[:fqdn]}.pl" do
+      source "client.pl.erb"
+      mode 0640
+      owner config[:user]
+      group "www-data"
+      variables :client => client, :config => client
+    end
   end
 end
 

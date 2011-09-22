@@ -61,3 +61,5 @@ default[:backuppc][:server][:ping][:cmd]      = '$pingPath -c 1 $host'
 default[:backuppc][:server][:ping][:max_msec] = '400'
 
 default[:backuppc][:server][:dump_pre_user_cmd] = '$sshPath -q root@$host /usr/local/sbin/mysqldumpall'
+
+default[:backupps][:server][:nonchef_clients] = []
