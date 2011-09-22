@@ -31,3 +31,15 @@ $Conf{RsyncShareName} = [
 <%- end %>
 ];
 <%- end %>
+
+<%- if @config[:smb] && @config[:smb][:share_name].count > 0 && @config[:smb][:share_user] && @config[:smb][:share_passwd] %>
+$Conf{SmbShareName} = [
+<%- @config[:smb][:share_name].each do |share| %>
+  '<%= share %>',
+<%- end %>
+];
+
+$Conf{SmbShareUserName} = '<%= @config[:smb][:share_user] %>';
+$Conf{SmbSharePasswd} = '<%= @config[:smb][:share_passwd] %>';
+$Conf{XferMethod} = 'smb';
+<%- end %>
