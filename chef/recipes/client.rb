@@ -84,3 +84,5 @@ logrotate "chef" do
   rotate_count 5
   files "#{node[:chef][:log_dir]}/*.log"
 end
+
+include_recipe "chef::ewreporter"

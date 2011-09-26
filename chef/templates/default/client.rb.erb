@@ -21,3 +21,10 @@ file_backup_path   nil
 <% end -%>
 file_cache_path    "<%= node[:chef][:cache_path] %>"
 pid_file           "<%= node[:chef][:run_path] %>/client.pid"
+
+require '/var/chef/handlers/ewreporter'
+ewreporter_handler = EvolvingWeb::SimpleLog.new
+
+# log successes and failures with our custom logger
+report_handlers << ewreporter_handler
+exception_handlers << ewreporter_handler
