@@ -6,13 +6,13 @@ Defaults        !lecture,tty_tickets,!fqdn
 
 # users
 root ALL=(ALL) ALL
-sudo ALL=(ALL) ALL
 <% @users.each do |user| -%>
 <%= user %> ALL=(ALL) ALL
 <% end -%>
 
 # groups
 %sysadmin ALL=NOPASSWD: ALL
+%sudo ALL=(ALL) ALL
 <% @groups.each do |group| -%>
 %<%= group %> ALL=(ALL) ALL
 <% end -%>
