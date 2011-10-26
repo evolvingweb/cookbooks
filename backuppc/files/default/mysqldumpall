@@ -5,6 +5,19 @@ DUMPOPTS="--opt --force --single-transaction"
 
 mkdir -p "$DUMPDIR"
 
-echo show databases | mysql | tail -n +2 | while read db; do
-  mysqldump $DUMPOPTS "$db" | gzip -c > "$DUMPDIR/$db.sql.gz"
-done
+TABLES=`echo "show databases" | mysql`
+
+if [ $? -eq 0 ]; then
+
+  echo "---Beginning Table Dump"
+  echo "$TABLES" | tail -n +2 | while read db; do
+    echo "* $db"
+    mysqldump $DUMPOPTS "$db" | gzip -c > "$DUMPDIR/$db.sql.gz"
+    if [ $? -ne 0 ]; then
+      echo "Encountered error while dumping $db"
+    fi
+  done
+  echo "---Dumped all tables"
+else
+  echo "Error: Failed to dump tables"
+fi
