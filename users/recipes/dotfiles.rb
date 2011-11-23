@@ -14,12 +14,12 @@ users.each do |u|
       action :nothing
     end
 
-    git "dotfiles" do
-      repository dotfiles_url
-      destination "#{home_dir}/dotfiles"
-      reference "master"
-      action :sync
-      notifies :run, resources(:execute => "change perms #{u['id']}")
-    end
+    # git "dotfiles" do
+    #   repository dotfiles_url
+    #   destination "#{home_dir}/dotfiles"
+    #   reference "master"
+    #   action :sync
+    #   notifies :run, resources(:execute => "change perms #{u['id']}")
+    # end
   end
 end

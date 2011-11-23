@@ -34,8 +34,8 @@ packages.each do |package,version|
 end
 
 execute "create karmic sources" do
-  command "sed s/#{node[:lsb][:codename]}/karmic/g /etc/apt/sources.list |\
-  sed s/http:\/\/[^ ]*/http:\/\/old-releases.ubuntu.com\/ubuntu/g >\
+  command "sed -e s/#{node[:lsb][:codename]}/karmic/g -e\
+  's/\(http:\/\/\)[^ ]*/http:\/\/old-releases.ubuntu.com\/ubuntu/g' /etc/apt/sources.list >\
   /etc/apt/sources.list.d/karmic.list"
   creates "/etc/apt/sources.list.d/karmic.list"
   notifies :run, resources(:execute => "apt-get update"), :immediately
