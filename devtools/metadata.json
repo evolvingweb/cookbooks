@@ -1,11 +1,9 @@
 {
-  "providing": {
-  },
-  "recipes": {
-  },
   "maintainer": "Evolving Web, Inc.",
-  "description": "Installs/Configures web development and sysadmin profiling and debugging command line tools",
   "replacing": {
+  },
+  "description": "Installs/Configures web development and sysadmin profiling and debugging command line tools",
+  "recipes": {
   },
   "maintainer_email": "Jonathan Villemaire-Krajden <jonvk@evolvingweb.ca>",
   "groupings": {
@@ -21,9 +19,11 @@
   "platforms": {
   },
   "version": "0.0.1",
-  "license": "All rights reserved",
-  "name": "devtools",
   "conflicting": {
   },
-  "long_description": "= DESCRIPTION:\nInstalls and configures sets of packages for web development and system administration. All tools are command line based.\n\n= REQUIREMENTS:\nTested on Ubuntu 10.04\n\n= ATTRIBUTES:\n\n= USAGE:\n\n"
+  "license": "All rights reserved",
+  "name": "devtools",
+  "long_description": "= DESCRIPTION:\nInstalls and configures sets of packages for web development and system administration. All tools are command line based.\n\n= REQUIREMENTS:\nTested on Ubuntu 10.04\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "providing": {
+  }
 }

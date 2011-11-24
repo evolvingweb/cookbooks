@@ -4,8 +4,13 @@
 #
 # Adds bash autocomplete for knife
 
-template "/etc/bash_autocomplete.d/knife" do
-  source "knife"
-  notifies :run, resources(:execute => "source /etc/bash_autocomplete.d/knife"), :immediately
+file "/etc/bash_completion.d/knife" do
+  mode 0644
+  owner "root"
+  group "root"
 end
+
+# execute "source knife" do
+#   command "source /etc/bash_completion.d/knife"
+# end
 
