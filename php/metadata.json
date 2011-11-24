@@ -1,35 +1,35 @@
 {
-  "name": "php",
-  "description": "Installs and configures PHP",
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
   "maintainer": "Evolving Web Inc",
-  "maintainer_email": "jeff@evolvingweb.ca",
-  "license": "All rights reserved",
-  "platforms": {
-  },
-  "dependencies": {
-    "apt": [
-
-    ],
-    "graphviz": [
-
-    ]
-  },
-  "recommendations": {
-  },
-  "suggestions": {
-  },
-  "conflicting": {
-  },
-  "providing": {
-  },
   "replacing": {
+  },
+  "description": "Installs and configures PHP",
+  "recipes": {
+  },
+  "maintainer_email": "jeff@evolvingweb.ca",
+  "groupings": {
   },
   "attributes": {
   },
-  "groupings": {
+  "recommendations": {
   },
-  "recipes": {
+  "dependencies": {
+    "graphviz": [
+
+    ],
+    "apt": [
+
+    ]
   },
-  "version": "0.0.1"
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "conflicting": {
+  },
+  "license": "All rights reserved",
+  "name": "php",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "providing": {
+  }
 }

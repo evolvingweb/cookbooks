@@ -33,11 +33,10 @@ packages.each do |package,version|
   end
 end
 
-execute "create karmic sources" do
-  command "sed -e s/#{node[:lsb][:codename]}/karmic/g -e\
-  's/\(http:\/\/\)[^ ]*/http:\/\/old-releases.ubuntu.com\/ubuntu/g' /etc/apt/sources.list >\
-  /etc/apt/sources.list.d/karmic.list"
-  creates "/etc/apt/sources.list.d/karmic.list"
+# Create Karmic source list.
+# FIXME: This repo is unsupported and we should discontinue using it. 
+template "/etc/apt/sources.list.d/karmic.list" do
+  source "karmic.list.erb"
   notifies :run, resources(:execute => "apt-get update"), :immediately
 end
 
