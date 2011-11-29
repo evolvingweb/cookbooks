@@ -1,9 +1,11 @@
 {
-  "maintainer": "Evolving Web Inc",
-  "replacing": {
+  "providing": {
   },
-  "description": "Installs and configures PHP",
   "recipes": {
+  },
+  "maintainer": "Evolving Web Inc",
+  "description": "Installs and configures PHP",
+  "replacing": {
   },
   "maintainer_email": "jeff@evolvingweb.ca",
   "groupings": {
@@ -25,11 +27,9 @@
   "platforms": {
   },
   "version": "0.0.1",
-  "conflicting": {
-  },
   "license": "All rights reserved",
   "name": "php",
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-  "providing": {
-  }
+  "conflicting": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n"
 }
