@@ -46,7 +46,7 @@ users.each do |u|
        git fetch origin --tags
        
 
-       if [ -z "$(git status --short)" ]
+       if [ -z "$(git status -u no --short)" ]
        then
         # TODO: What if the dotfiles aren't on master?
         #[ git name-rev --name-only HEAD == "master" ] || git checkout master
