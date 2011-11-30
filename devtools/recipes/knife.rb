@@ -4,13 +4,10 @@
 #
 # Adds bash autocomplete for knife
 
-file "/etc/bash_completion.d/knife" do
-  mode 0644
+cookbook_file "/etc/bash_completion.d/knife" do
+  source "knife"
+  mode 00644
   owner "root"
   group "root"
 end
-
-# execute "source knife" do
-#   command "source /etc/bash_completion.d/knife"
-# end
 
