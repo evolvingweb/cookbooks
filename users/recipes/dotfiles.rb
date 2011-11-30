@@ -9,14 +9,19 @@ users.each do |u|
     dotfiles = u['dotfiles']
     dotfiles_url = u['dotfiles']['url']
 
+    execute "change perms #{u['id']}" do
+      command "chown -R #{u['id']}:#{u['id']} #{home_dir}/dotfiles"
+      action :nothing
+    end 
+
     git "dotfiles" do
       repository  dotfiles_url
       destination "#{home_dir}/dotfiles"
       reference "master"
       action :checkout
-      user u['id']
-      group u['id']
+      notifies :run, resources(:execute => "change perms #{u['id']}")
     end
+
 
     script "update and install dotfiles" do
       interpreter "bash"
@@ -41,7 +46,7 @@ users.each do |u|
        git fetch origin --tags
        
 
-       if git diff-index --exit-code --quiet HEAD
+       if [ -z "$(git status --short)" ]
        then
         # TODO: What if the dotfiles aren't on master?
         #[ git name-rev --name-only HEAD == "master" ] || git checkout master
@@ -57,12 +62,11 @@ users.each do |u|
         ([ -x ./setup.sh ] && ./setup.sh) || ([ -x ./install.sh ] && ./install.sh )
       fi
       
-      # chown -R #{u['id']}:#{u['id']} .
-
       # Chef doesn't like non-zero exit status. Hopefully we've done enough checking above.
       # If you haven't got a setup file or it fails then that's your own problem.
       exit 0
 EOF
+      notifies :run, resources(:execute => "change perms #{u['id']}")
     end
 
   end
