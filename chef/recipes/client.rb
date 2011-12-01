@@ -65,7 +65,7 @@ template "/etc/chef/client.rb" do
   group root_group
   mode 0644
   notifies :create, resources(:ruby_block => "reload_client_config")
-  notifies :restart, "service[chef-client]"
+  # notifies :restart, "service[chef-client]"
 end
 
 log "Add the chef::delete_validation recipe to the run list to remove the #{Chef::Config[:validation_key]}" do

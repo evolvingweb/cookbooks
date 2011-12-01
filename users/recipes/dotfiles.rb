@@ -59,7 +59,12 @@ users.each do |u|
         fi
 
         # If there's a setup or install file run it (prefer setup if both exist).
-        ([ -x ./setup.sh ] && ./setup.sh) || ([ -x ./install.sh ] && ./install.sh )
+        if [ -x ./setup.sh ] && [ ! $(fgrep '~/' ./setup.sh) ]
+        then
+          ./setup.sh 
+        elif [ -x ./install.sh ] && [ ! $(fgrep '~/' ./install.sh) ]
+          ./install.sh 
+        fi
       fi
       
       # Chef doesn't like non-zero exit status. Hopefully we've done enough checking above.
