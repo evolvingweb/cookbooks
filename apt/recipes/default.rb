@@ -21,7 +21,19 @@ e = execute "apt-get update" do
   action :nothing
 end
 
-e.run_action(:run)
+template "/etc/apt/apt.conf.d/90user" do
+  source "90user.erb"
+  mode 0644
+  owner "root"
+  group "root"
+  notifies :run, "execute[apt-get update]", :immediately
+end
+
+# It is a nice convenience for this to run every time, but it seems
+# to break things by running before the 90user template gets generated,
+# thus always failing to fix the Cache-Limit setting... because the Cache-Limit
+# setting isn't set.
+# e.run_action(:run)
 
 %w{/var/cache/local /var/cache/local/preseeding}.each do |dirname|
   directory dirname do
