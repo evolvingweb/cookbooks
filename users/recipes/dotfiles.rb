@@ -14,17 +14,25 @@ users.each do |u|
       action :nothing
     end 
 
+    ruby_block "stuff" do
+      block do
+        puts Process.uid
+      end
+    end
+
     git "dotfiles" do
       repository  dotfiles_url
       destination "#{home_dir}/dotfiles"
       reference "master"
-      action :checkout
+      # action :checkout
+      action :nothing
       notifies :run, resources(:execute => "change perms #{u['id']}")
     end
 
 
     script "update and install dotfiles" do
       interpreter "bash"
+      action :nothing
       code <<-EOF
        # These files are actively developed, so we can't have chef doing git reset --hard
        # whenever it pleases. Willy nilly merges aren't much better as they could potentially 
