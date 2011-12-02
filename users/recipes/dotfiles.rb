@@ -59,11 +59,14 @@ users.each do |u|
         fi
 
         # If there's a setup or install file run it (prefer setup if both exist).
-        if [ -x ./setup.sh ] && [ ! $(fgrep '~/' ./setup.sh) ]
+        # Make sure to run it as the user in question!!
+        # If you're wondering why root has Tavish's dotfiles on all machines...
+        if [ -x ./setup.sh ] 
         then
-          ./setup.sh 
-        elif [ -x ./install.sh ] && [ ! $(fgrep '~/' ./install.sh) ]
-          ./install.sh 
+          su -c "./setup.sh" #{u['id']}
+        elif [ -x ./install.sh ] 
+        then
+          su -c "./install.sh" #{u['id']}
         fi
       fi
       
