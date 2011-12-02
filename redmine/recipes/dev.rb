@@ -1,9 +1,8 @@
 include_recipe "redmine::rails"
 include_recipe "redmine::mysql"
 
-execute "change owner www" do
+execute "reset perms" do
   command "chown -R www-data:staff /var/www"
-  # This is a dev machine, after all.
   command "chmod -R g+w /var/www"
   action :nothing
 end
@@ -24,7 +23,8 @@ git "redmine" do
   destination "/var/www/redmine"
   action :checkout
   enable_submodules true
-  notifies :run, resources(:execute => "change owner www")
+  notifies :create, resources(:template => "/var/www/redmine/config/database.yml")
+  notifies :run, resources(:execute => "reset perms")
 end
 
 template "/etc/apache2/sites-available/redmine" do
@@ -37,6 +37,6 @@ execute "rake database" do
   command "rake generate_session_store"
   command "rake db:migrate"
   # replace this by databse copy once it's working.
-  command "rake redmine:load_default_data"
-  only_if "test -z $(\"mysql redmine < <(echo 'show tables;'))\""
+  command "yes en | rake redmine:load_default_data"
+  not_if "test -z $(\"mysql redmine < <(echo 'show tables;'))\""
 end

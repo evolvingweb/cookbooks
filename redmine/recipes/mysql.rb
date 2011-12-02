@@ -8,12 +8,16 @@ grant all privileges on redmine.* to redmine;
 flush privileges;
 EOF
 "
+  only_if "mysql mysql < <(echo 'show databases;') | grep -q ^redmine$"
   action :run
-  not_if "mysql mysql < <(echo 'show databases;') | grep -q ^redmine$"
 end
 
 template "/var/www/redmine/config/database.yml" do
   source "database.yml.erb"
+  owner "www-data"
+  group "staff"
+  mode 0644
   action :create
+  not_if "test -d /var/www/redmine/config"
 end
 
