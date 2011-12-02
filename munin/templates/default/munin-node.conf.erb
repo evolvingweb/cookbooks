@@ -41,3 +41,9 @@ host_name <%= node[:fqdn] %>
 allow ^<%= ip.to_s.gsub(/\./, '\.') %>$
 <% end %>
 allow ^127\.0\.0\.1$
+
+# start munin automatically
+start on (net-device-up
+          and local-filesystems
+      and runlevel [2345])
+stop on runlevel [016]
