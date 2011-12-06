@@ -21,9 +21,8 @@ script "rake database" do
 
   rake generate_session_store
   rake db:migrate
-  # replace this by databse copy once it's working.
 
-  yes en | rake redmine:load_default_data
+  script/reset-db.sh
 
 EOF
   cwd "/var/www/redmine"
@@ -50,6 +49,15 @@ git "redmine" do
   action :checkout
   enable_submodules true
   notifies :create, resources(:template => "/var/www/redmine/config/database.yml"), :immediately
+  action :nothing
+end
+
+script "add github key" do
+  interpreter "bash"
+  code <<-EOF
+grep -q github ~/.ssh/known_hosts || ssh-keyscan github.com >> ~/.ssh/known_hosts
+EOF
+notifies :checkout, resources(:git => "redmine"), :immediately
 end
 
 template "/etc/apache2/sites-available/redmine" do
