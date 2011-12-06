@@ -18,10 +18,9 @@
 
 
 cron "chef-update" do
-  minute 13
+  minute "13,43"
   user "chef-update"
   home "/home/chef-update"
-  path "/home/chef-update"
   shell "/bin/bash"
   command 'knife ssh -C 5 "*:*" "chef-client" -x root'
   action :create

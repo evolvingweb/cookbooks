@@ -19,7 +19,8 @@ users.each do |u|
       destination "#{home_dir}/dotfiles"
       reference "master"
       action :checkout
-      notifies :run, resources(:execute => "change perms #{u['id']}")
+      enable_submodules true
+      notifies :run, resources(:execute => "change perms #{u['id']}"), :immediately
     end
 
 
@@ -56,6 +57,11 @@ users.each do |u|
         then
           # Bad merge. Forget it. Let the developer sort it out next time they take a look.
           git reset --hard
+        else
+          # TODO: What do we do if updating submodules fails?
+          git submodule sync
+          git submodule init
+          git submodule update
         fi
 
         # If there's a setup or install file run it (prefer setup if both exist).
