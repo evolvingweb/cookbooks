@@ -40,6 +40,9 @@ template "/etc/apt/sources.list.d/karmic.list" do
   notifies :run, resources(:execute => "apt-get update"), :immediately
 end
 
+# To undo manually, run:
+# apt-get purge php5 php5-cli php5-cli php5-cgi php5-dev php5-gd php5-common php-pear php5-curl php5-mysql libapache2-mod-php5 php-apc
+# aptitude unhold php5 php5-cli php5-cli php5-cgi php5-dev php5-gd php5-common php-pear php5-curl php5-mysql libapache2-mod-php5 php-apc
 execute "hold php5 packages" do
   command "aptitude hold #{packages.keys.join(' ')}"
   action :nothing
