@@ -4,6 +4,7 @@
 #
 
 include_recipe "apt"
+package "aptitude"
 
 packages = {
   'php5'                => '5.2',
