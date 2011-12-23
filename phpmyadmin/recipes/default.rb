@@ -25,6 +25,6 @@ package "phpmyadmin" do
   action :upgrade
 end
 
-link "/etc/apache2/conf.d/phpmyadmin" do
-  to "/etc/phpmyadmin/apache.conf"
+template "/etc/apache2/conf.d/phpmyadmin" do
+  source "apache.conf.erb"
 end

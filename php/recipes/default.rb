@@ -15,11 +15,9 @@ if node[:php][:version] == '5.3' then
   end
 
   packages.each do |pkg|
-    if File.exists? "/etc/apt/preferences.d/#{package}"
-      File.delete "/etc/apt/preferences.d/#{package}"
-      execute "aptitude --assume-yes purge #{package}" do
-        not_if "apt-cache policy #{package} | grep 'Installed: #{version}'"
-      end 
+    if File.exists? "/etc/apt/preferences.d/#{pkg}"
+      File.delete "/etc/apt/preferences.d/#{pkg}"
+      execute "aptitude --assume-yes purge #{pkg}"
     end
     package pkg
   end
