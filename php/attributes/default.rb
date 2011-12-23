@@ -4,6 +4,8 @@
 # Attributes:: default
 #
 
+default[:php][:version] = '5.2'
+
 # memory limits
 default[:php][:cli][:memory_limit]     = '256M'
 default[:php][:apache2][:memory_limit] = '256M'
