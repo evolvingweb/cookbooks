@@ -1,0 +1,38 @@
+{
+  "conflicting": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "description": "Installs/Configures phpmyadmin",
+  "providing": {
+  },
+  "recipes": {
+  },
+  "maintainer": "MoJo Code",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "dependencies": {
+    "php": [
+
+    ],
+    "mysql": [
+
+    ],
+    "apache2": [
+
+    ]
+  },
+  "maintainer_email": "yabawock@gmail.com",
+  "groupings": {
+  },
+  "recommendations": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "license": "Apache 2.0",
+  "name": "phpmyadmin",
+  "suggestions": {
+  }
+}
