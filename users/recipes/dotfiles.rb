@@ -8,16 +8,18 @@ users.each do |u|
     home_dir = "/home/#{u['id']}"
     dotfiles = u['dotfiles']
     dotfiles_url = u['dotfiles']['url']
+    dotfiles_branch = u['dotfiles']['branch'] || "master"
 
     execute "change perms #{u['id']}" do
       command "chown -R #{u['id']}:#{u['id']} #{home_dir}/dotfiles"
+      user 0
       action :nothing
     end 
 
     git "dotfiles" do
       repository  dotfiles_url
       destination "#{home_dir}/dotfiles"
-      reference "master"
+      reference dotfiles_branch
       action :checkout
       enable_submodules true
       notifies :run, resources(:execute => "change perms #{u['id']}"), :immediately
@@ -39,7 +41,7 @@ users.each do |u|
 
        # Chef uses "deploy" branch for SCM resources which is annoying.
        # Incidentally, we also have the awkwardness of HEAD being on the wrong branch...
-       git checkout master
+       git checkout #{dotfiles_branch}
        git branch -d deploy
 
        # Tags are harmless, right?
@@ -51,7 +53,7 @@ users.each do |u|
        then
         # TODO: What if the dotfiles aren't on master?
         #[ git name-rev --name-only HEAD == "master" ] || git checkout master
-        git merge origin/master
+        git merge origin/#{dotfiles_branch}
         
         if [ $? -ne 0 ]
         then
