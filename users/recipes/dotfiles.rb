@@ -3,6 +3,13 @@ include_recipe "users::default"
 
 users = search :users, node[:users][:groups].map{ |g| "groups:#{g}" }.join(" OR ")
 
+script "add git keys" do
+  interpreter "bash"
+  code <<-EOF
+    grep -q github ~/.ssh/known_hosts || ssh-keyscan github.com >> ~/.ssh/known_hosts
+EOF
+end
+
 users.each do |u|
   if u['dotfiles']
     home_dir = "/home/#{u['id']}"
