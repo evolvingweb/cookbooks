@@ -17,21 +17,19 @@ users.each do |u|
     dotfiles_url = u['dotfiles']['url']
     dotfiles_branch = u['dotfiles']['branch'] || "master"
 
-    execute "change perms #{u['id']}" do
-      command "chown -R #{u['id']}:#{u['id']} #{home_dir}/dotfiles"
-      user 0
-      action :nothing
-    end 
-
     git "dotfiles" do
       repository  dotfiles_url
       destination "#{home_dir}/dotfiles"
       reference dotfiles_branch
       action :checkout
       enable_submodules true
-      notifies :run, resources(:execute => "change perms #{u['id']}"), :immediately
     end
 
+    execute "change perms #{u['id']}" do
+      command "chown -R #{u['id']}:#{u['id']} #{home_dir}/dotfiles"
+      user 0
+      only_if "test -d #{home_dir}/dotfiles"
+    end 
 
     script "update and install dotfiles" do
       interpreter "bash"
