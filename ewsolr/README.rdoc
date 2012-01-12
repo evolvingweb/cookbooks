@@ -1,0 +1,17 @@
+= DESCRIPTION:
+
+Installs Solr search server with a minimal configuration. Should work out of the box, but most features need configuration.
+
+If you change the version attribute at a later time, the recipe should update solr accordingly.
+
+= REQUIREMENTS:
+
+'tomcat' recipe from this repository, or equivalent recipe for tomcat 6.
+
+= ATTRIBUTES:
+
+node[:solr][:version]
+
+Version of solr to install. Defaults to 3.5.0. Also tested for 1.4.1. 
+
+
