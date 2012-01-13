@@ -51,6 +51,8 @@ end
 
 cookbook_file "/etc/solr/solr-tomcat.xml" do
   action :create_if_missing
+  mode 0660
+  group "tomcat6"
   source "solr.xml"
 end
 
@@ -62,6 +64,7 @@ end
 
 cookbook_file "/etc/solr/tomcat.policy" do
   action :create_if_missing
+  mode 0660
   source "tomcat.policy"
 end
 
