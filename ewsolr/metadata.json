@@ -1,0 +1,32 @@
+{
+  "long_description": "= DESCRIPTION:\n\nInstalls Solr search server with a minimal configuration. Should work out of the box, but most features need configuration.\n\nIf you change the version attribute at a later time, the recipe should update solr accordingly.\n\n= REQUIREMENTS:\n\n'tomcat' recipe from this repository, or equivalent recipe for tomcat 6.\n\n= ATTRIBUTES:\n\nnode[:solr][:version]\n\nVersion of solr to install. Defaults to 3.5.0. Also tested for 1.4.1. \n\n\n",
+  "providing": {
+  },
+  "description": "Installs solr",
+  "maintainer": "Evolving Web Inc.",
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "maintainer_email": "sysadmin@evolvingweb.ca",
+  "groupings": {
+  },
+  "dependencies": {
+    "tomcat": [
+
+    ]
+  },
+  "recipes": {
+  },
+  "recommendations": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "name": "ewsolr",
+  "conflicting": {
+  }
+}

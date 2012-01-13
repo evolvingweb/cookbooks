@@ -20,6 +20,7 @@
 # It does not remove an old solr install from a different recipe. It will however,
 # upon the version number being changed, clean up appropriately.
 
+include_recipe "tomcat"
 
 script "install" do
   interpreter "bash"
@@ -46,14 +47,10 @@ EOF
 end
 
 directory "/etc/solr" do
-  owner "tomcat6"
-  group "tomcat6"
 end
 
 cookbook_file "/etc/solr/solr-tomcat.xml" do
   action :create_if_missing
-  owner "tomcat6"
-  group "tomcat6"
   source "solr.xml"
 end
 
@@ -65,8 +62,6 @@ end
 
 cookbook_file "/etc/solr/tomcat.policy" do
   action :create_if_missing
-  owner "tomcat6"
-  group "tomcat6"
   source "tomcat.policy"
 end
 
