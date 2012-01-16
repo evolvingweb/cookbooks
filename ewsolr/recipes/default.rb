@@ -33,7 +33,7 @@ tar -xzf apache-solr-#{node[:solr][:version]}.tgz
 
 cp -fR  apache-solr-#{node[:solr][:version]}/example/solr /usr/share
 cp apache-solr-#{node[:solr][:version]}/dist/apache-solr-#{node[:solr][:version]}.war /usr/share/solr/
-ln -fs /usr/share/solr/apache-solr-#{node[:solr][:version]}.war solr.war
+ln -fs /usr/share/solr/apache-solr-#{node[:solr][:version]}.war /usr/share/solr/solr.war
 cp -f apache-solr-#{node[:solr][:version]}/contrib /usr/share/solr
 mkdir /usr/share/solr/lib
 cp -f apache-solr-#{node[:solr][:version]}/dist/*.jar /usr/share/solr/lib
