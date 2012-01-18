@@ -26,7 +26,7 @@ script "install" do
   interpreter "bash"
   code <<EOF
 
-test [ -f /usr/share/solr/apache-solr-#{node[:solr][:version]}.war ] && exit 0 # Don't reinstall.
+test -f /usr/share/solr/apache-solr-#{node[:solr][:version]}.war  && exit 0 # Don't reinstall.
 
 wget http://apache.mirror.iweb.ca/lucene/solr/#{node[:solr][:version]}/apache-solr-#{node[:solr][:version]}.tgz -O apache-solr-#{node[:solr][:version]}.tgz
 tar -xzf apache-solr-#{node[:solr][:version]}.tgz
@@ -34,7 +34,7 @@ tar -xzf apache-solr-#{node[:solr][:version]}.tgz
 cp -fR  apache-solr-#{node[:solr][:version]}/example/solr /usr/share
 cp apache-solr-#{node[:solr][:version]}/dist/apache-solr-#{node[:solr][:version]}.war /usr/share/solr/
 ln -fs /usr/share/solr/apache-solr-#{node[:solr][:version]}.war /usr/share/solr/solr.war
-cp -f apache-solr-#{node[:solr][:version]}/contrib /usr/share/solr
+cp -Rf apache-solr-#{node[:solr][:version]}/contrib /usr/share/solr
 mkdir /usr/share/solr/lib
 cp -f apache-solr-#{node[:solr][:version]}/dist/*.jar /usr/share/solr/lib
 

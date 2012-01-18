@@ -47,6 +47,7 @@ template "nginx.conf" do
   group "root"
   mode 0644
   notifies :restart, resources(:service => "nginx")
+  action :create_if_missing
 end
 
 template "#{node[:nginx][:dir]}/sites-available/default" do
@@ -54,4 +55,5 @@ template "#{node[:nginx][:dir]}/sites-available/default" do
   owner "root"
   group "root"
   mode 0644
+  action :create_if_missing
 end
