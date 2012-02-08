@@ -3,5 +3,5 @@
 # Attributes:: default
 #
 
-default[:users][:groups] = %w(sysadmin)
+default[:users][:groups] = %w(sysadmin staff)
 default[:users][:external_keys] = []
