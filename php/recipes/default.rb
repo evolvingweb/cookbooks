@@ -60,6 +60,7 @@ else # default to php 5.2
   # FIXME: This repo is unsupported and we should discontinue using it. 
   template "/etc/apt/sources.list.d/karmic.list" do
     source "karmic.list.erb"
+    mode 0644
     notifies :run, resources(:execute => "apt-get update"), :immediately
   end
 
