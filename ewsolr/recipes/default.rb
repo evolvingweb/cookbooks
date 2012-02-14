@@ -66,8 +66,5 @@ cookbook_file "/etc/solr/tomcat.policy" do
   action :create_if_missing
   mode 0660
   source "tomcat.policy"
-end
-
-service "tomcat6" do
-  action :restart
+  notifies :restart, "service[tomcat]"
 end
