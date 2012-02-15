@@ -56,8 +56,6 @@ users.each do |u|
 
        if [ -z "$(git status -u no --short)" ]
        then
-        # TODO: What if the dotfiles aren't on master?
-        #[ git name-rev --name-only HEAD == "master" ] || git checkout master
         git merge origin/#{dotfiles_branch}
         
         if [ $? -ne 0 ]
