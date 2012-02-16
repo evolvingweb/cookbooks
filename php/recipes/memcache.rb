@@ -1,6 +1,7 @@
 script "memcache" do
   interpreter "bash"
-  code "pecl install memcache"
+  # Using -Z to avoid bug http://pear.php.net/bugs/bug.php?id=16606
+  code "pecl install -Z memcache"
   user "root"
 end
 
