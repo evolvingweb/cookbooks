@@ -1,15 +1,15 @@
 {
-  "maintainer_email": "jeff@evolvingweb.ca",
-  "groupings": {
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "providing": {
   },
   "description": "Installs and configures PHP",
-  "recipes": {
-  },
-  "recommendations": {
+  "maintainer": "Evolving Web Inc",
+  "replacing": {
   },
   "attributes": {
   },
-  "suggestions": {
+  "maintainer_email": "jeff@evolvingweb.ca",
+  "groupings": {
   },
   "dependencies": {
     "graphviz": [
@@ -19,17 +19,17 @@
 
     ]
   },
-  "conflicting": {
+  "recipes": {
+  },
+  "recommendations": {
   },
   "platforms": {
   },
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
   "version": "0.0.1",
-  "providing": {
+  "suggestions": {
   },
   "license": "All rights reserved",
   "name": "php",
-  "maintainer": "Evolving Web Inc",
-  "replacing": {
+  "conflicting": {
   }
 }

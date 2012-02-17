@@ -2,6 +2,7 @@ script "memcache" do
   interpreter "bash"
   # Using -Z to avoid bug http://pear.php.net/bugs/bug.php?id=16606
   code "pecl install -Z memcache"
+  not_if "php -i | grep -q memcache"
   user "root"
 end
 
