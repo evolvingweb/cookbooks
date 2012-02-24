@@ -10,6 +10,21 @@ script "add git keys" do
 EOF
 end
 
+git "root-dotfiles" do
+  repository "git@git.ewdev.ca:root/dotfiles.git"
+  destination "/root/dotfiles"
+  reference "master"
+  user "root"
+  group "root"
+  action :sync
+end
+
+bash "setup root dotfiles" do
+  only_if "test -x /root/dotfiles/setup.sh"
+  code "/root/dotfiles/setup.sh"
+  cwd "/root/dotfiles"
+end
+
 users.each do |u|
   if u['dotfiles']
     home_dir = "/home/#{u['id']}"
