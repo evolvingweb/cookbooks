@@ -1,29 +1,29 @@
 {
-  "maintainer": "Evolving Web Inc.",
-  "replacing": {
+  "maintainer_email": "sysadmin@evolvingweb.ca",
+  "groupings": {
   },
   "description": "Installs/Configures chef-cron",
   "recipes": {
   },
-  "maintainer_email": "sysadmin@evolvingweb.ca",
-  "groupings": {
+  "recommendations": {
   },
   "attributes": {
   },
-  "recommendations": {
+  "suggestions": {
   },
   "dependencies": {
   },
-  "suggestions": {
+  "conflicting": {
   },
   "platforms": {
   },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
   "version": "0.0.1",
-  "conflicting": {
+  "providing": {
   },
   "license": "Apache 2.0",
   "name": "chef-cron",
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-  "providing": {
+  "maintainer": "Evolving Web Inc.",
+  "replacing": {
   }
 }
