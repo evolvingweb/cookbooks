@@ -7,7 +7,7 @@ include_recipe "git"
 
 git "/usr/local/lib/drush" do
   repository "http://git.drupal.org/project/drush.git"
-  reference "7.x-4.x"
+  reference node[:drush][:version]
   action :sync
 end
 

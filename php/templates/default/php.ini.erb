@@ -442,7 +442,7 @@ register_globals = Off
 ; Whether or not to register the old-style input arrays, HTTP_GET_VARS
 ; and friends.  If you're not using them, it's recommended to turn them off,
 ; for performance reasons.
-register_long_arrays = On
+register_long_arrays = Off
 
 ; This directive tells PHP whether to declare the argv&argc variables (that
 ; would contain the GET information).  If you don't use these variables, you
@@ -463,7 +463,7 @@ post_max_size = <%= node[:php][:apache2][:post_max_size] %>
 ;
 
 ; Magic quotes for incoming GET/POST/Cookie data.
-magic_quotes_gpc = On
+magic_quotes_gpc = Off
 
 ; Magic quotes for runtime-generated data, e.g. data from SQL, from exec(), etc.
 magic_quotes_runtime = Off

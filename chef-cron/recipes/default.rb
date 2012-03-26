@@ -22,6 +22,6 @@ cron "chef-update" do
   user "chef-update"
   home "/home/chef-update"
   shell "/bin/bash"
-  command 'knife ssh "*:*" "chef-client" -x root'
+  command 'source ~/.keychain/chef-sh && knife ssh "*:*" "chef-client" -x root'
   action :create
 end
