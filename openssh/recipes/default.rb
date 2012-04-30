@@ -60,3 +60,12 @@ template "/etc/ssh/sshd_config" do
   variables :config => node[:openssh]
   notifies :reload, "service[ssh]"
 end
+
+template "/etc/ssh/ssh_config" do
+  source "ssh_config.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  variables :config => node[:openssh]
+  notifies :reload, "service[ssh]"
+end
