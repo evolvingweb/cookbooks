@@ -4,5 +4,7 @@
 extension = apc.so
 apc.enabled = 1
 apc.enable_cli = 0
-apc.shm_size = <%= @shm_size %>
+apc.shm_size = <%= @apcattrs[:shm_size] %>
+apc.shm_segments = <%= @apcattrs[:shm_segments] %>
+apc.write_lock = <%= @apcattrs[:write_lock] %>
 apc.include_once_override = 0

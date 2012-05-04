@@ -21,3 +21,5 @@ default[:php][:apache2][:error_log] = 'syslog'
 
 # apc
 default[:php][:apc][:shm_size] = '256'
+default[:php][:apc][:shm_segments] = '1'
+default[:php][:apc][:write_lock] = '1'

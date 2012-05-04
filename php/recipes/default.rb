@@ -95,5 +95,5 @@ template "/etc/php5/conf.d/apc.ini" do
   mode 0644
   owner "root"
   group "root"
-  variables :shm_size => node[:php][:apc][:shm_size]
+  variables :shm_size => node[:php][:apc][:shm_size], :apcattrs => node[:php][:apc]
 end
